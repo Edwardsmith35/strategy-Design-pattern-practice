@@ -9,7 +9,7 @@ class Order():
     def __init__(self, total: float, strategy: DiscountStrategy = None):
         self._total = total
         self._strategy = strategy if strategy else NoDiscount()
-        print(f"Order Created with total: ${self.total:2f} and Strategy: {self._strategy.__class__.__name__}")
+        print(f"Order Created with total: ${self.total:.2f} and Strategy: {self._strategy.__class__.__name__}")
     
     @property # This defines 'total' as a read-only property
     def total(self):
