@@ -1,5 +1,5 @@
-from .concrete_strategies import NoDiscount
-from .strategy_interface import DiscountStrategy
+from concrete_strategies import NoDiscount
+from strategy_interface import DiscountStrategy
 
 class Order():
     """
@@ -7,13 +7,13 @@ class Order():
     It maintains a reference to one of the Strategy objects.
     """
     def __init__(self, total: float, strategy: DiscountStrategy = None):
-        self.total = total
-        self.strategy = strategy if strategy else NoDiscount()
-        print(f"Order Created with total: ${self.total:2f} and Strategy: {self.strategy.__class__.__name__}")
+        self._total = total
+        self._strategy = strategy if strategy else NoDiscount()
+        print(f"Order Created with total: ${self.total:2f} and Strategy: {self._strategy.__class__.__name__}")
     
-    @property
+    @property # This defines 'total' as a read-only property
     def total(self):
-        return self.total
+        return self._total
 
     def set_discount_strategy(self, strategy: DiscountStrategy):
         """Allows replacing the strategy at runtime."""
@@ -21,4 +21,4 @@ class Order():
         self._strategy = strategy
     
     def get_final_price(self):
-        return self.strategy.apply_discount(self.total)
+        return self._strategy.apply_discount(self.total)

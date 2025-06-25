@@ -1,4 +1,4 @@
-from .strategy_interface import (
+from strategy_interface import (
     DiscountStrategy,
 )  
 
