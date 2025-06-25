@@ -7,6 +7,6 @@ class DiscountStrategy(ABC):
     defined by Concrete Strategies.
     """
     @abstractmethod
-    def apply_discount(self, order_total: float, discount_percent: int) -> float:
+    def apply_discount(self, order_total: float) -> float:
         pass
 
